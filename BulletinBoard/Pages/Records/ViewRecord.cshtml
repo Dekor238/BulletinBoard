@@ -1,0 +1,46 @@
+@page
+@model BulletinBoard.Pages.Records.ViewRecord
+
+@{
+    ViewData["Title"] = "Просмотр объявления - " + Model.Record.RecordTitle;
+}
+
+<h3>Просмотр объявления - @Model.Record.RecordTitle</h3>
+
+<p><span>Автор объявления: </span><span><b>@Model.Record.EMail</b></span></p>
+<p><span>Название объявления: </span><span><b>@Model.Record.RecordTitle</b></span></p>
+<p><snap>Текст объявления:</snap><div style="border:solid 1px; padding:10px">@Model.Record.RecordText</div></p>
+<br>
+
+<p><a asp-page="/Records/Comments/AddComment" class="btn btn-success" asp-route-id="@Model.Record.Id">Добавить комментарий</a> &nbsp; 
+<a asp-page="/Index" class="btn btn-outline-secondary">Главная страница</a> &nbsp;
+    </p>
+
+@if (@Model.Comment.Count != 0)
+{
+    <table class="table">
+        <head class="table-primary">
+            <tr>
+                <td width="250px"><b>Имя автора</b></td>
+                <td width="400px"><b>Комментарий</b></td>
+                <td><b>Дата добавления</b></td>
+                <td><b>Действия</b></td>
+            </tr>
+        </head>
+        @foreach (var c in Model.Comment)
+        {
+            <tbody>
+            <tr>
+                <td>@c.UserName</td>
+                <td>@c.CommentText</td>
+                <td>@c.Date</td>
+                <td>
+                    <span>
+                        <a asp-page="/Records/Comments/DeleteComment" asp-route-id="@c.CommentId">Удалить</a>
+                    </span>
+                </td>
+            </tr>
+            </tbody>
+        }
+    </table>
+}

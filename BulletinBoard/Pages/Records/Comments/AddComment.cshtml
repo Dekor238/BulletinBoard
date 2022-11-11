@@ -1,0 +1,15 @@
+@page
+@model AddComment
+
+@{
+    ViewData["Title"] = "Добаление комментария";
+}
+<h3>Добавление нового комментария</h3>
+<p>Для добавления нового комментария необходимо запонить форму.</p>
+<form method="post">
+    <p>Ваше имя: <input type="text" name="UserName" required maxlength="128"></p>
+    <p>Текст комментария: <br><textarea name="CommentText" cols="50" rows="5" required maxlength="254"></textarea></p>
+    <p><button class="btn btn-success" type="submit">Добавить комментарий</button> &nbsp; 
+        <a asp-page="/Records/ViewRecord" asp-route-id="@Model.RId" class="btn btn-outline-secondary">Вернуться к объявлению</a> &nbsp;
+        </p>
+</form>

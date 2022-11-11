@@ -1,0 +1,17 @@
+@page
+@model BulletinBoard.Pages.Records.AddRecord
+
+@{
+    ViewData["Title"] = "Добавление нового объявления";
+}
+
+<h3>Добавление нового объявления</h3>
+<p>Для добавление нового объявления необходимо запонить форму.</p>
+<form method="post">
+    <p>Ваш e-mail: <input type="text" name="EMail" required></p>
+    <p>Тема объявления: <input type="text" name="RecordTitle" required maxlength="128"></p>
+    <p>Текст объявления: <br><textarea name="RecordText" cols="50" rows="5" required></textarea></p>
+    <p><button class="btn btn-success" type="submit">Добавить объявление</button> &nbsp; 
+        <a asp-page="/Index" class="btn btn-outline-secondary">Главная страница</a> &nbsp;
+        </p>
+</form>

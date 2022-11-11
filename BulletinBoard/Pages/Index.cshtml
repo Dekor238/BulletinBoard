@@ -1,0 +1,53 @@
+﻿@page
+@using BulletinBoard.Data.Model
+@model IndexModel
+@{
+    ViewData["Title"] = "Главная страница";
+}
+
+<div class="text-center">
+   
+    <p><a asp-page="Records/AddRecord" class="btn btn-success">Добавить объявление</a></p>
+    
+    <br>
+    @if (Model.AllRecords.Count == 0)
+    {
+        <p>Пока нет записей</p>
+    }
+    else
+    {
+        <table class="table ">
+            <head class="table-primary">
+                <tr>
+                    <td width="300px">Почта автора</td>
+                    <td width="400px">Заголовок объявления</td>
+                    <td>Дата добавления</td>
+                    <td>Дата последнего комментария</td>
+                    <td>Действия</td>
+                </tr>
+            </head>
+            <tbody>
+            @foreach (Record record in Model.AllRecords)
+            {
+                @if (!record.IsDeleted)
+                {
+                    <tr>
+                        <td>@record.EMail</td>
+                        <td>
+                            <a class="link link-primary" asp-page="/Records/ViewRecord" asp-route-id="@record.RecordId">@record.RecordTitle</a>
+                        </td>
+                        <td>@record.Date</td>
+                        <td>@Model.Comments.Select(d=>d.Date).First()</td>
+                        <td>
+                            <span>
+                                <a asp-page="Records/DeleteRecord" asp-route-id="@record.RecordId">Удалить</a>
+                            </span>
+                        </td>
+                    </tr>
+                }
+            }
+            </tbody>
+        </table>
+    }
+    
+</div>

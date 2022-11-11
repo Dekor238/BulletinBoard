@@ -1,0 +1,18 @@
+@page
+@model BulletinBoard.Pages.Records.DeleteRecord
+
+@{
+    ViewData["Title"] = "Удаление объявления - " + Model.Record.RecordTitle;
+}
+
+<h3>Удаление объявления - @Model.Record.RecordTitle</h3>
+
+<p>Для удаления объявления вам нужно ввести пароль объявления</p>
+<form method="post">
+    <p><span>Введите пароль для удаления: </span><input type="text" required maxlength="15" name="password"></p>
+    <p><button class="btn btn-success" type="submit">Удалить объявление</button> &nbsp;
+        <a asp-page="/Index" class="btn btn-outline-secondary">Главная страница</a>
+        </p>
+</form>
+
+<p> @ViewData["DelStatusRecord"]</p>

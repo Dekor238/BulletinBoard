@@ -1,0 +1,18 @@
+@page
+@model BulletinBoard.Pages.Records.Comments.DeleteComment
+
+@{
+    ViewData["Title"] = "Удаление комментария";
+}
+
+<h3>Удаление комментария</h3>
+
+<p>Для удаления комментария вам нужно ввести пароль</p>
+<form method="post">
+    <p><span>Введите пароль для удаления: </span><input type="text" required maxlength="15" name="password"></p>
+    <p><button class="btn btn-success" type="submit">Удалить комментарий</button> &nbsp;
+        <a asp-page="/Records/ViewRecord" asp-route-id="@Model.Comment.RecordId" class="btn btn-outline-secondary">Вернуться к объявлению</a>
+    </p>
+</form>
+
+<p> @ViewData["DelStatusComment"]</p>

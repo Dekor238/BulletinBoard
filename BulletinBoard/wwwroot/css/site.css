@@ -1,0 +1,29 @@
+html {
+  font-size: 14px;
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+body {
+  margin-bottom: 30px;
+  /*background: url("/img/background.jpg") no-repeat;*/
+  /*background-size:cover;*/
+}
+
+.wrapper {
+  min-height: 88vh;
+  display: flex;
+  flex-direction: column;
+}
+
+.centers {
+  flex-grow: 1;
+}
+
+.footer {
+  height: 30px;
+}
